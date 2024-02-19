@@ -1,0 +1,8 @@
+pip install langchain transformers faiss
+pip install -U sentence-transformers
+Miniconda CLI
+pip install faiss-cpu
+
+
+#nmslib
+#cosine similarity
