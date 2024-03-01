@@ -6,7 +6,7 @@ import pandas as pd
 import time
 start_time = time.time()
 
-with open('content/facts.txt') as f:
+with open('content/history-of-europe.txt', encoding='utf-8') as f:
     data = f.read()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -14,11 +14,11 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 texts = text_splitter.split_text(data)
 
-df = pd.DataFrame({'facts': texts})
+df = pd.DataFrame({'history-of-europe': texts})
 
 df.head()
 
-text = df['facts']
+text = df['history-of-europe']
 encoder = SentenceTransformer('paraphrase-mpnet-base-v2')
 vectors = encoder.encode(texts)
 
@@ -37,9 +37,9 @@ def search(search_text):
     merge = pd.merge(results, df, left_on='ann', right_index=True)
     return merge
 
-merge=search("Who is Darpa")
+merge=search("Britain")
 for i in range(0,5):
-    print(merge['facts'][i])
+    print(merge['history-of-europe'][i])
     print('--------------------------')
 
 #END Search Engine
